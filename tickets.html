@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Futurespective Tickets</title>
+  <link rel="stylesheet" href="https://use.typekit.net/cgy7pse.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/cgy7pse.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0'
+
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Martian Mono', monospace;
+      background-image: url("img/background.png");
+      padding: 2rem;
+    }
+
+    h1,
+    h2 {
+      font-family: "martian-mono-variable", sans-serif;
+      font-variation-settings: "wdth" 112.5, "wght" 400;
+    }
+
+
+    .main-content {
+      margin-left: 200px;
+      padding: 2rem;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 8px;
+      max-width: 600px;
+    }
+
+    .ticket {
+      border: 1px solid #444;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 8px;
+      background: #231D40;
+      max-width: 600px;
+    }
+
+    .ticket h2 {
+      margin-top: 0;
+      font-family: 'Martian Mono', monospace;
+    }
+
+    .add-to-cart {
+      background-color: #483B89;
+      color: #c5d92d;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 0;
+      font-family: 'Martian Mono', monospace;
+    }
+
+    .cart {
+      margin-top: 2rem;
+      border-top: 1px solid #444;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html">
+      <img src="img/logo-small.png" alt="Futurespective Logo" class="logo-small" />
+    </a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#schedule">Schedule</a>
+    <a href="index.html#tickets">Tickets</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Purchase Tickets</h1>
+
+    <div class="ticket">
+      <h2>Day 1</h2>
+      <p>$50</p>
+      <button class="add-to-cart" onclick="addToCart('Day 1', 50)">Add to Cart</button>
+    </div>
+
+    <div class="ticket">
+      <h2>Day 2</h2>
+      <p>$50</p>
+      <button class="add-to-cart" onclick="addToCart('Day 2', 50)">Add to Cart</button>
+    </div>
+
+    <div class="ticket">
+      <h2>Weekend Pass</h2>
+      <p>$90</p>
+      <button class="add-to-cart" onclick="addToCart('Weekend Pass', 90)">Add to Cart</button>
+    </div>
+
+    <div class="cart" id="cart">
+      <h2>Cart</h2>
+      <ul id="cart-items"></ul>
+      <p><strong>Total: $<span id="cart-total">0</span></strong></p>
+      <button class="add-to-cart" onclick="checkout()">Checkout</button>
+
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach(({ item, price }) => {
+        const li = document.createElement('li');
+        li.textContent = `${item} - $${price}`;
+        cartItems.appendChild(li);
+        total += price;
+      });
+      cartTotal.textContent = total;
+    }
+  </script>
+</body>
+
+</html>
