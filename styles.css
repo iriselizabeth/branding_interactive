@@ -44,6 +44,7 @@ section {
   align-items: center;
   text-align: center;
   gap: 1rem;
+  margin-left: 80px;
 }
 
 /* Sidebar */
@@ -120,15 +121,16 @@ section {
 }
 
 /* Section Layout */
-.section-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 90vw;
-  margin: 0 auto;
-}
+  .section-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 7rem 2rem; /* 👈 Add this line */
+  }
 
 .section-text {
   flex: 1 1 60%;
@@ -144,29 +146,42 @@ section {
 .section-img img {
   width: 100%;
   height: auto;
-  max-width: 400px;
 }
 
-/* Tabs */
-.tabs {
+.osher-img {
+  width: 100%;
+  height: auto;
+  max-width: 600px; /* large by default */
+}
+
+
+.tab-button-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 30px;
+  flex-wrap: nowrap; /* <--- prevent random wrapping */
+}
+
+.tab-button {
+  margin: 0;
+  width: auto; /* just natural size */
+  min-width: 150px; /* prevents them from getting *too* tiny */
 }
 
 .tab-button {
   background: transparent;
   border: 2px solid #c5d92d;
   color: #c5d92d;
-  padding: 15px 25px;
+  padding: 12px 20px; /* smaller padding */
   font-size: 0.85rem;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 8px; /* match ticket button */
   transition: all 0.3s ease;
+  width: 220px; /* match Buy Tickets width */
+  max-width: 100%;
 }
 
 .tab-button:hover {
@@ -203,6 +218,10 @@ section {
   transform: translateX(0);
   pointer-events: auto;
   position: relative;
+}
+
+.osher-img {
+  max-width: 60vw;
 }
 
 /* Tickets */
@@ -257,6 +276,10 @@ section {
     margin-left: 0;
   }
 
+  .osher-img {
+    max-width: 90vw; /* almost full width on mobile, keeping margin */
+  }
+
   .sidebar {
     flex-direction: row;
     height: 60px;
@@ -276,6 +299,10 @@ section {
     transform: none;
     width: 120px;
     margin: 0;
+  }
+
+  .about-center {
+    margin-left: 0;
   }
 
   .section-wrapper {
@@ -298,11 +325,17 @@ section {
     gap: 2rem;
     max-width: 100%;
   }
-
+/* 
   .section-text {
     flex-direction: column;
     align-items: center;
-  }
+  } */
+}
+
+.section-img img {
+  width: 100%;
+  height: auto;
+  max-width: 80vw;
 }
 
 .text-content {
@@ -335,4 +368,25 @@ section {
 .logo-row {
   flex-direction: column;
   gap: 1rem;
+}
+
+.ticket-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .osher-img {
+    max-width: 500px; /* slightly smaller on tablets/small laptops */
+  }
+}
+
+@media (max-width: 600px) {
+  .tab-button-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
